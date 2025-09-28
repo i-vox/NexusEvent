@@ -1,0 +1,26 @@
+{
+  "project": {
+    "name": "NexusEvent",
+    "version": "0.1.0",
+    "description": "NexusEvent - 跨平台消息推送SDK，支持Discord、Slack等多种平台",
+    "author": "NexusEvent Team",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/i-vox/NexusEvent",
+    "homepage": "https://github.com/i-vox/NexusEvent",
+    "issues": "https://github.com/i-vox/NexusEvent/issues",
+    "email": "1.flint.lab@gmail.com"
+  },
+  "packages": {
+    "flutter": {
+      "name": "nexusevent_flutter",
+      "pub_url": "https://pub.dev/packages/nexusevent_flutter"
+    },
+    "javascript": {
+      "name": "@nexusevent/nexusevent-js",
+      "npm_url": "https://www.npmjs.com/package/@nexusevent/nexusevent-js"
+    }
+  },
+  "examples": {
+    "discord_webhook": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+  }
+}

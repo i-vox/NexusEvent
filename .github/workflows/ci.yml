@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  flutter-test:
+    name: Flutter Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        channel: 'stable'
+        
+    - name: Get Flutter dependencies
+      working-directory: ./packages/nexusevent_flutter
+      run: flutter pub get
+      
+    - name: Run Flutter analyze
+      working-directory: ./packages/nexusevent_flutter
+      run: flutter analyze
+      
+    - name: Run Flutter tests
+      working-directory: ./packages/nexusevent_flutter
+      run: flutter test
+
+  javascript-test:
+    name: JavaScript Tests  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: ./packages/nexusevent-js/package.json
+        
+    - name: Install dependencies
+      working-directory: ./packages/nexusevent-js
+      run: npm ci
+      
+    - name: Run TypeScript check
+      working-directory: ./packages/nexusevent-js
+      run: npx tsc --noEmit
+      
+    - name: Run build
+      working-directory: ./packages/nexusevent-js
+      run: npm run build
+      
+    - name: Run lint
+      working-directory: ./packages/nexusevent-js
+      run: npm run lint --if-present
+      
+    - name: Run tests
+      working-directory: ./packages/nexusevent-js
+      run: npm test --if-present
+
+  examples-test:
+    name: Examples Build
+    runs-on: ubuntu-latest
+    needs: [flutter-test, javascript-test]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        
+    - name: Test Flutter example
+      working-directory: ./examples/flutter_demo
+      run: |
+        flutter pub get
+        flutter analyze
+        flutter test --coverage
+        
+    - name: Setup Node.js for JS example
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Test JavaScript example
+      working-directory: ./examples/js-demo
+      run: |
+        # 验证JavaScript示例语法
+        node -c index.js

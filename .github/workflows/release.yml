@@ -1,0 +1,108 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release-npm:
+    name: Release to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Install dependencies
+        working-directory: ./packages/nexusevent-js
+        run: npm ci
+        
+      - name: Run tests
+        working-directory: ./packages/nexusevent-js
+        run: npm test
+        
+      - name: Build
+        working-directory: ./packages/nexusevent-js
+        run: npm run build
+        
+      - name: Publish to NPM
+        working-directory: ./packages/nexusevent-js
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release-pub:
+    name: Release to Pub.dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+          
+      - name: Setup Pub Credentials
+        run: |
+          mkdir -p ~/.pub-cache
+          echo '${{ secrets.PUB_DEV_CREDENTIALS }}' > ~/.pub-cache/credentials.json
+          
+      - name: Get dependencies
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter pub get
+        
+      - name: Run tests
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter test
+        
+      - name: Publish to Pub.dev
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter pub publish --force
+
+  create-github-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: [release-npm, release-pub]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ## NexusEvent ${{ github.ref }}
+            
+            ### 新功能
+            - 跨平台消息推送SDK
+            - 支持Discord、Slack、Telegram等平台
+            - Flutter和JavaScript双SDK发布
+            
+            ### 安装
+            
+            **Flutter:**
+            ```yaml
+            dependencies:
+              nexusevent_flutter: ^0.1.0
+            ```
+            
+            **JavaScript/Node.js:**
+            ```bash
+            npm install @nexusevent/nexusevent-js
+            ```
+            
+            详细使用说明请查看[README](https://github.com/i-vox/NexusEvent/blob/main/README.md)
+          draft: false
+          prerelease: false
