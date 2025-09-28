@@ -15,13 +15,13 @@ A powerful JavaScript/TypeScript SDK for cross-platform message sending, support
 ## Installation
 
 ```bash
-npm install @nexusevent/nexusevent-js
+npm install nexusevent-js
 ```
 
 Or with yarn:
 
 ```bash
-yarn add @nexusevent/nexusevent-js
+yarn add nexusevent-js
 ```
 
 ## Quick Start
@@ -29,7 +29,7 @@ yarn add @nexusevent/nexusevent-js
 ### ES Modules (Recommended)
 
 ```javascript
-import { NexusEventClient, DiscordWebhookConfig } from '@nexusevent/nexusevent-js';
+import { NexusEventClient, DiscordWebhookConfig } from 'nexusevent-js';
 
 const client = new NexusEventClient();
 
@@ -52,7 +52,7 @@ try {
 ### CommonJS
 
 ```javascript
-const { NexusEventClient, DiscordWebhookConfig } = require('@nexusevent/nexusevent-js');
+const { NexusEventClient, DiscordWebhookConfig } = require('nexusevent-js');
 
 const client = new NexusEventClient();
 // ... rest is the same
@@ -70,7 +70,7 @@ const client = new NexusEventClient();
 ### Discord Rich Embeds
 
 ```javascript
-import { NexusEventClient, DiscordWebhookConfig } from '@nexusevent/nexusevent-js';
+import { NexusEventClient, DiscordWebhookConfig } from 'nexusevent-js';
 
 const client = new NexusEventClient();
 const config = new DiscordWebhookConfig({
@@ -95,7 +95,7 @@ await client.sendDiscordMessage({
 ### Slack Messages
 
 ```javascript
-import { NexusEventClient, SlackWebhookConfig } from '@nexusevent/nexusevent-js';
+import { NexusEventClient, SlackWebhookConfig } from 'nexusevent-js';
 
 const client = new NexusEventClient();
 const config = new SlackWebhookConfig({
@@ -127,7 +127,7 @@ import {
   DiscordWebhookConfig, 
   DiscordEmbed,
   MessageResult 
-} from '@nexusevent/nexusevent-js';
+} from 'nexusevent-js';
 
 const client: NexusEventClient = new NexusEventClient();
 
@@ -146,7 +146,7 @@ const result: MessageResult = await client.sendDiscordMessage({
 ## Error Handling
 
 ```javascript
-import { NexusEventClient, NexusEventError } from '@nexusevent/nexusevent-js';
+import { NexusEventClient, NexusEventError } from 'nexusevent-js';
 
 try {
   await client.sendMessage(/* ... */);
@@ -166,7 +166,7 @@ The SDK works in browsers with module bundlers like Webpack, Rollup, or Vite:
 
 ```html
 <script type="module">
-  import { NexusEventClient } from './node_modules/@nexusevent/nexusevent-js/dist/index.esm.js';
+  import { NexusEventClient } from './node_modules/nexusevent-js/dist/index.esm.js';
   
   const client = new NexusEventClient();
   // ... use the client

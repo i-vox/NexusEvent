@@ -57,7 +57,7 @@ await NexusEvent.instance.send('main_discord', message);
 ### JavaScript SDK
 
 ```javascript
-import { NexusEvent, Platform } from '@nexusevent/nexusevent-js';
+import { NexusEvent, Platform } from 'nexusevent-js';
 
 // Get SDK instance
 const nexus = NexusEvent.getInstance();
@@ -116,7 +116,7 @@ dependencies:
 ### JavaScript/TypeScript
 
 ```bash
-npm install @nexusevent/nexusevent-js
+npm install nexusevent-js
 ```
 
 ## 🔧 Features
