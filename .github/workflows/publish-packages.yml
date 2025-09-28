@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./packages/nexusevent-js
-        run: npm ci
+        run: npm install
 
       - name: Build package
         working-directory: ./packages/nexusevent-js
@@ -56,7 +56,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.19.0'
 
       - name: Get Flutter dependencies
         working-directory: ./packages/nexusevent_flutter
