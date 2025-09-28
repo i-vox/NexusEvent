@@ -8,7 +8,7 @@ set -e
 echo "🚀 开始发布 NexusEvent v0.1.0"
 
 # 验证发布权限
-if [ "$USER" != "minhao.lee" ] && [ "$LOGNAME" != "minhao.lee" ]; then
+if [ "$GITHUB_USERNAME" != "i-vox" ]; then
     echo "❌ 错误: 仅限项目所有者发布"
     exit 1
 fi

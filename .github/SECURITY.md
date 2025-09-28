@@ -16,7 +16,7 @@ If you discover a security vulnerability in NexusEvent, please report it respons
 ### 🔒 Private Disclosure
 Please **DO NOT** create a public GitHub issue for security vulnerabilities.
 
-Instead, please email us privately at: **i.flint.lab@gmail.com**
+Instead, please email us privately at: **security@nexusevent.dev**
 
 ### 📧 What to include
 When reporting a vulnerability, please include:
