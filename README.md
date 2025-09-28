@@ -57,7 +57,7 @@ await NexusEvent.instance.send('main_discord', message);
 ### JavaScript SDK
 
 ```javascript
-import { NexusEvent, Platform } from 'nexusevent-js';
+import { NexusEvent, Platform } from '@i-vox/nexusevent-js';
 
 // Get SDK instance
 const nexus = NexusEvent.getInstance();
@@ -110,13 +110,21 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  nexusevent_flutter: ^0.1.1
+  nexusevent_flutter: ^0.1.2
 ```
 
 ### JavaScript/TypeScript
 
+First configure npm to use GitHub Packages:
+
 ```bash
-npm install nexusevent-js
+npm config set @i-vox:registry https://npm.pkg.github.com
+```
+
+Then install:
+
+```bash
+npm install @i-vox/nexusevent-js
 ```
 
 ## 🔧 Features

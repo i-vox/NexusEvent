@@ -1,6 +1,6 @@
 // JavaScript SDK 使用示例
-// 注意：在实际使用中，这里应该导入发布到npm的包
-// const { NexusEvent, Platform } = require('@nexusevent/nexusevent-js');
+// 注意：在实际使用中，这里应该导入发布到GitHub Packages的包
+// const { NexusEvent, Platform } = require('@i-vox/nexusevent-js');
 
 // 使用本地开发版本（从编译后的dist目录导入）
 const { NexusEvent, Platform } = require('../../packages/nexusevent-js/dist/index.js');

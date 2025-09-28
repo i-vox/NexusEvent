@@ -1,6 +1,6 @@
 {
-  "name": "nexusevent-js",
-  "version": "0.1.1",
+  "name": "@i-vox/nexusevent-js",
+  "version": "0.1.2",
   "description": "NexusEvent JavaScript SDK - 跨平台消息推送SDK，支持Discord、Slack等多种平台",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -52,6 +52,9 @@
     "type": "git",
     "url": "https://github.com/i-vox/NexusEvent.git",
     "directory": "packages/nexusevent-js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "jest": {
     "preset": "ts-jest",

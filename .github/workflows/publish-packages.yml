@@ -1,0 +1,93 @@
+name: Publish Packages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 0.1.2)'
+        required: true
+        default: '0.1.2'
+
+jobs:
+  publish-js:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install dependencies
+        working-directory: ./packages/nexusevent-js
+        run: npm ci
+
+      - name: Build package
+        working-directory: ./packages/nexusevent-js
+        run: npm run build
+
+      - name: Run tests
+        working-directory: ./packages/nexusevent-js
+        run: npm test
+
+      - name: Publish to GitHub Packages
+        working-directory: ./packages/nexusevent-js
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-flutter:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Get Flutter dependencies
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter pub get
+
+      - name: Run Flutter analyze
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter analyze
+
+      - name: Run Flutter tests
+        working-directory: ./packages/nexusevent_flutter
+        run: flutter test
+
+      # Note: GitHub doesn't have a pub.dev equivalent for Flutter packages yet
+      # For now, we'll create a GitHub release with the Flutter package
+      - name: Create Flutter package archive
+        working-directory: ./packages/nexusevent_flutter
+        run: |
+          tar -czf nexusevent_flutter-${{ github.event.release.tag_name || github.event.inputs.version }}.tar.gz \
+            --exclude='.dart_tool' \
+            --exclude='build' \
+            --exclude='.packages' \
+            .
+
+      - name: Upload Flutter package to release
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./packages/nexusevent_flutter/nexusevent_flutter-${{ github.event.release.tag_name }}.tar.gz
+          asset_name: nexusevent_flutter-${{ github.event.release.tag_name }}.tar.gz
+          asset_content_type: application/gzip

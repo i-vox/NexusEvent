@@ -13,6 +13,26 @@ A powerful Flutter SDK for cross-platform message sending, supporting Discord, S
 
 ## Installation
 
+### Option 1: From GitHub Releases (Recommended)
+
+Download the latest Flutter package from [GitHub Releases](https://github.com/i-vox/NexusEvent/releases) and extract to your project:
+
+```bash
+# Download and extract the Flutter package
+wget https://github.com/i-vox/NexusEvent/releases/download/v0.1.1/nexusevent_flutter-v0.1.1.tar.gz
+tar -xzf nexusevent_flutter-v0.1.1.tar.gz -C your_project/packages/
+```
+
+Then add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  nexusevent_flutter:
+    path: ./packages/nexusevent_flutter
+```
+
+### Option 2: From pub.dev
+
 Add this to your package's `pubspec.yaml` file:
 
 ```yaml
