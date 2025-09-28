@@ -1,6 +1,6 @@
 name: nexusevent_flutter
 description: NexusEvent Flutter SDK - 跨平台消息推送SDK，支持Discord、Slack等多种平台
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/i-vox/NexusEvent
 repository: https://github.com/i-vox/NexusEvent
 issue_tracker: https://github.com/i-vox/NexusEvent/issues

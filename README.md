@@ -110,7 +110,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  nexusevent_flutter: ^0.1.2
+  nexusevent_flutter: ^0.1.3
 ```
 
 ### JavaScript/TypeScript
