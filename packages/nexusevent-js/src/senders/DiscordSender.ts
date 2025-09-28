@@ -16,7 +16,7 @@ export class DiscordSender implements EventSender {
       timeout: 15000,
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'NexusEvent-JS/0.1.0',
+        'User-Agent': 'NexusEvent-JS/0.1.1',
       },
       // 设置重试拦截器
       validateStatus: (status) => status < 600, // 除了600+都认为是成功的

@@ -21,16 +21,13 @@ A cross-platform messaging SDK that supports sending notification messages to mu
 ```
 NexusEvent/
 ├── packages/                    # SDK packages for different languages
-│   ├── nexusevent-core/         # Core type definitions and interface specifications
+│   ├── nexusevent-core/         # Core type definitions
 │   ├── nexusevent_flutter/      # Flutter/Dart SDK
-│   ├── nexusevent-js/           # JavaScript/TypeScript SDK
-│   ├── nexusevent-python/       # Python SDK (planned)
-│   └── nexusevent-go/           # Go SDK (planned)
+│   └── nexusevent-js/           # JavaScript/TypeScript SDK
 ├── examples/                    # Usage examples
 │   ├── flutter_demo/            # Flutter demo app
 │   └── js-demo/                 # JavaScript demo script
-├── docs/                        # Project documentation
-└── README.md                    # Project description
+└── README.md                    # Project documentation
 ```
 
 ## 🚀 Quick Start
@@ -101,10 +98,9 @@ await nexus.send('main_discord', message);
 
 ## 📖 Documentation
 
-- [Flutter SDK Usage Guide](packages/nexusevent_flutter/README.md)
-- [JavaScript SDK Usage Guide](packages/nexusevent-js/README.md)
-- [Core Concepts](packages/nexusevent-core/README.md)
-- [Developer Contributing Guide](docs/CONTRIBUTING.md)
+- [Flutter Demo](examples/flutter_demo/)
+- [JavaScript Demo](examples/js-demo/)
+- [Security Policy](.github/SECURITY.md)
 
 ## 🚀 Installation
 
@@ -114,7 +110,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  nexusevent_flutter: ^0.1.0
+  nexusevent_flutter: ^0.1.1
 ```
 
 ### JavaScript/TypeScript
@@ -208,7 +204,7 @@ try {
 
 ## 🤝 Contributing
 
-We welcome all forms of contributions! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
+We welcome all forms of contributions! Please see our [Issue Templates](.github/ISSUE_TEMPLATE/) for bug reports and feature requests.
 
 ### Development Setup
 

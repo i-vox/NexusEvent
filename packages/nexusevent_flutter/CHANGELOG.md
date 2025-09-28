@@ -1,32 +1,36 @@
 # Changelog
 
-## 0.1.0
+All notable changes to this project will be documented in this file.
 
-* **Initial release** 🎉
-* Cross-platform event messaging SDK for Flutter
-* Discord webhook integration support
-* Robust error handling with retry mechanism
-* Input validation and secure URL handling
-* Broadcast messaging to multiple platforms
-* Comprehensive test coverage
-* Full documentation and examples
+## [0.1.1] - 2024-09-28
+
+### Added
+- Initial Flutter SDK release
+- Discord webhook support with rich embed functionality
+- Slack webhook and Bot API integration
+- Telegram Bot API support
+- Cross-platform compatibility (iOS, Android, Web, Desktop)
+- Comprehensive error handling and validation
+- Asynchronous API design
+- Type-safe configuration classes
 
 ### Features
-- 🚀 **Multi-platform support**: Discord, Slack, Telegram (Discord implemented)
-- 🔒 **Security first**: Strict webhook URL validation and input sanitization
-- 🔄 **Retry mechanism**: Exponential backoff for network failures
-- 📊 **Broadcast results**: Detailed success/failure reporting
-- 🧪 **Well tested**: 100% test coverage
-- 📖 **Rich documentation**: Complete API documentation and usage examples
+- `NexusEventClient` main client class
+- `DiscordWebhookConfig` for Discord webhook configuration
+- `SlackWebhookConfig` for Slack webhook configuration
+- `TelegramBotConfig` for Telegram bot configuration
+- Rich embed support for Discord messages
+- Rate limiting and retry mechanisms
+- Comprehensive unit test coverage
 
-### API
-- `NexusEvent.instance` - Singleton access
-- `addSender()` - Add message senders
-- `send()` - Send to specific sender
-- `broadcast()` - Send to multiple senders
-- `validateSender()` - Validate sender configuration
+### Documentation
+- Complete API documentation
+- Usage examples and demos
+- Integration guides for each supported platform
 
-### Supported Platforms
-- ✅ Discord (via webhooks)
-- 🔄 Slack (coming soon)
-- 🔄 Telegram (coming soon)
+## [0.1.0] - 2024-09-27
+
+### Added
+- Initial project setup
+- Core architecture and interfaces
+- Basic Flutter package structure
