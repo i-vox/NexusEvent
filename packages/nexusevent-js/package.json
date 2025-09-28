@@ -2,9 +2,14 @@
   "name": "@nexusevent/nexusevent-js",
   "version": "0.1.0",
   "description": "NexusEvent JavaScript SDK - 跨平台消息推送SDK，支持Discord、Slack等多种平台",
-  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",

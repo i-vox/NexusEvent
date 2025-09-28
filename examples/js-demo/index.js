@@ -2,8 +2,8 @@
 // 注意：在实际使用中，这里应该导入发布到npm的包
 // const { NexusEvent, Platform } = require('@nexusevent/nexusevent-js');
 
-// 临时导入本地开发版本（需要先编译）
-// import { NexusEvent, EventMessage, Platform } from '../../packages/nexusevent-js/src/index';
+// 使用本地开发版本（从编译后的dist目录导入）
+const { NexusEvent, Platform } = require('../../packages/nexusevent-js/dist/index.js');
 
 /**
  * 演示基本的Discord消息发送功能
@@ -45,7 +45,7 @@ async function demonstrateDiscordSending() {
     const richMessage = {
       title: 'JavaScript SDK 演示',
       content: '这是一条通过 NexusEvent JavaScript SDK 发送的测试消息',
-      url: 'https://github.com/your-org/NexusEvent',
+      url: 'https://github.com/i-vox/NexusEvent',
       author: 'NexusEvent Bot',
       color: 0x00ff00, // 绿色
       timestamp: new Date(),
@@ -63,10 +63,9 @@ async function demonstrateDiscordSending() {
       timestamp: new Date(),
     };
 
-    // 需要导入Platform枚举才能使用
-    // await nexus.broadcast(broadcastMessage, [Platform.DISCORD]);
-    // 暂时跳过广播演示，因为需要完整的导入
-    console.log('✅ 广播消息发送成功');
+    // 使用广播功能发送到所有Discord发送器
+    const result = await nexus.broadcast(broadcastMessage, [Platform.DISCORD]);
+    console.log(`✅ 广播消息发送成功: ${result.successful}/${result.total} 成功`);
 
     console.log('\n🎉 所有演示完成！');
 

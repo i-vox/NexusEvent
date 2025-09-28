@@ -1,7 +1,7 @@
 name: nexusevent_flutter_demo
 description: NexusEvent Flutter SDK示例应用
-
 version: 1.0.0+1
+publish_to: none  # 私有项目，不发布到pub.dev
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  # 本地开发时使用path依赖
+  # 示例项目使用path依赖（开发时）
   nexusevent_flutter:
     path: ../../packages/nexusevent_flutter
 

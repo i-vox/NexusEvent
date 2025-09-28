@@ -1,0 +1,14 @@
+{
+  "name": "nexusevent-js-demo",
+  "version": "1.0.0",
+  "description": "NexusEvent JavaScript SDK 使用示例",
+  "type": "commonjs",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "author": "NexusEvent Team",
+  "license": "Apache-2.0"
+}
