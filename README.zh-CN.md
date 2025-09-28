@@ -18,9 +18,30 @@
 ### Flutter SDK
 
 #### 安装
+
+##### 方式一：从GitHub Releases下载（推荐）
+
+从[GitHub Releases](https://github.com/i-vox/NexusEvent/releases)下载最新的Flutter包并解压到项目中：
+
+```bash
+# 下载并解压Flutter包
+wget https://github.com/i-vox/NexusEvent/releases/download/v0.1.2/nexusevent_flutter-v0.1.2.tar.gz
+tar -xzf nexusevent_flutter-v0.1.2.tar.gz -C your_project/packages/
+```
+
+然后在`pubspec.yaml`中添加：
+
 ```yaml
 dependencies:
-  nexusevent_flutter: ^0.1.0
+  nexusevent_flutter:
+    path: ./packages/nexusevent_flutter
+```
+
+##### 方式二：从pub.dev安装
+
+```yaml
+dependencies:
+  nexusevent_flutter: ^0.1.2
 ```
 
 #### 使用
@@ -48,13 +69,22 @@ await NexusEvent.instance.send('main', message);
 ### JavaScript SDK
 
 #### 安装
+
+首先配置npm使用GitHub Packages：
+
 ```bash
-npm install @nexusevent/nexusevent-js
+npm config set @i-vox:registry https://npm.pkg.github.com
+```
+
+然后安装包：
+
+```bash
+npm install @i-vox/nexusevent-js
 ```
 
 #### 使用
 ```javascript
-import { NexusEvent } from '@nexusevent/nexusevent-js';
+import { NexusEvent } from '@i-vox/nexusevent-js';
 
 // 获取单例实例
 const nexus = NexusEvent.getInstance();
@@ -113,10 +143,10 @@ const isValid = await nexus.validateSender('main');
 
 ## 📖 文档
 
-- [API兼容性](docs/API_COMPATIBILITY.md)
-- [贡献指南](docs/CONTRIBUTING.md)
-- [Flutter SDK文档](packages/nexusevent_flutter/README.md)
-- [JavaScript SDK文档](packages/nexusevent-js/README.md)
+- [Flutter Demo](examples/flutter_demo/)
+- [JavaScript Demo](examples/js-demo/)
+- [安全策略](.github/SECURITY.md)
+- [发布流程指南](RELEASE_PROCESS.md)
 
 ## 🛠️ 开发
 
@@ -124,12 +154,13 @@ const isValid = await nexus.validateSender('main');
 ```
 NexusEvent/
 ├── packages/
+│   ├── nexusevent-core/       # 核心类型定义
 │   ├── nexusevent_flutter/    # Flutter SDK
 │   └── nexusevent-js/         # JavaScript SDK
 ├── examples/
 │   ├── flutter_demo/          # Flutter示例
 │   └── js-demo/              # JavaScript示例
-└── docs/                      # 项目文档
+└── README.md                  # 项目文档
 ```
 
 ### 本地开发
@@ -157,7 +188,7 @@ npm run build
 
 ## 🤝 贡献
 
-欢迎贡献代码！请查看[贡献指南](docs/CONTRIBUTING.md)了解详情。
+欢迎贡献代码！请查看我们的[问题模板](.github/ISSUE_TEMPLATE/)了解如何报告错误和请求功能。
 
 1. Fork 项目
 2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
@@ -172,8 +203,8 @@ npm run build
 ## 🔗 链接
 
 - [GitHub仓库](https://github.com/i-vox/NexusEvent)
-- [Flutter包](https://pub.dev/packages/nexusevent_flutter)
-- [npm包](https://www.npmjs.com/package/@nexusevent/nexusevent-js)
+- [GitHub Packages - JavaScript SDK](https://github.com/i-vox/NexusEvent/packages)
+- [GitHub Releases - Flutter SDK](https://github.com/i-vox/NexusEvent/releases)
 - [问题反馈](https://github.com/i-vox/NexusEvent/issues)
 
 ---
