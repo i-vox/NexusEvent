@@ -8,7 +8,7 @@
     "repository": "https://github.com/i-vox/NexusEvent",
     "homepage": "https://github.com/i-vox/NexusEvent",
     "issues": "https://github.com/i-vox/NexusEvent/issues",
-    "email": "1.flint.lab@gmail.com"
+    "email": "${AUTHOR_EMAIL}"
   },
   "packages": {
     "flutter": {
