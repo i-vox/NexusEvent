@@ -1,0 +1,30 @@
+# Label configuration for auto-labeling PRs
+
+"flutter":
+  - packages/nexusevent_flutter/**/*
+  - "**/*.dart"
+
+"javascript":
+  - packages/nexusevent-js/**/*
+  - "**/*.ts"
+  - "**/*.js"
+
+"documentation":
+  - "**/*.md"
+  - docs/**/*
+
+"github":
+  - .github/**/*
+
+"ci/cd":
+  - .github/workflows/**/*
+  - scripts/**/*
+
+"examples":
+  - examples/**/*
+
+"dependencies":
+  - "**/package.json"
+  - "**/pubspec.yaml"
+  - "**/package-lock.json"
+  - "**/pubspec.lock"

@@ -1,0 +1,21 @@
+# Global code owners
+* @i-vox
+
+# Flutter SDK
+/packages/nexusevent_flutter/ @i-vox
+
+# JavaScript SDK  
+/packages/nexusevent-js/ @i-vox
+
+# Documentation
+/docs/ @i-vox
+*.md @i-vox
+
+# CI/CD and GitHub configuration
+/.github/ @i-vox
+/scripts/ @i-vox
+
+# Project configuration
+/.project-config.json @i-vox
+/package.json @i-vox
+/pubspec.yaml @i-vox
